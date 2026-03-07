@@ -1,5 +1,5 @@
 const repoUrl =
-  "https://github.com/vercel-partner-solutions/slack-agent-template";
+  "https://github.com/corpinfonet-creator/AgenteProconnect";
 
 export const html = `<!DOCTYPE html>
     <html lang="en">
@@ -181,7 +181,7 @@ export const html = `<!DOCTYPE html>
         <script>
             async function fetchReadmeContent() {
                 try {
-                    const response = await fetch('https://api.github.com/repos/vercel-partner-solutions/slack-agent-template/readme', {
+                    const response = await fetch('https://api.github.com/repos/corpinfonet-creator/AgenteProconnect/readme', {
                         headers: {
                             'Accept': 'application/vnd.github.v3+json',
                         }
