@@ -4,7 +4,7 @@ export default defineEventHandler(async () => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Agente Proconnect</title>
+    <title>Registro - Soft ProConnect Peru SAC</title>
     <style>
         * {
             margin: 0;
@@ -166,7 +166,7 @@ export default defineEventHandler(async () => {
     <div class="container">
         <div class="register-header">
             <h1>🚀 Crear Cuenta</h1>
-            <p>Únete a Agente Proconnect</p>
+            <p>Únete a Soft ProConnect Peru SAC</p>
         </div>
 
         <div id="alert" class="alert"></div>

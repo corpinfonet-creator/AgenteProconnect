@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Agente Proconnect</title>
+    <title>Dashboard - Soft ProConnect Peru SAC</title>
     <style>
         * {
             margin: 0;
@@ -207,7 +207,7 @@ export default defineEventHandler(async (event) => {
 </head>
 <body>
     <nav class="navbar">
-        <h1>🚀 Agente Proconnect</h1>
+        <h1>🚀 Soft ProConnect Peru SAC</h1>
         <div class="navbar-right">
             <div class="user-info">
                 <div class="avatar">${safeUser.name.charAt(0).toUpperCase()}</div>
@@ -220,7 +220,7 @@ export default defineEventHandler(async (event) => {
     <div class="container">
         <div class="welcome">
             <h2>¡Bienvenido de vuelta! 👋</h2>
-            <p>Aquí está tu panel de control de Agente Proconnect</p>
+            <p>Aquí está tu panel de control de Soft ProConnect Peru SAC</p>
         </div>
 
         <div class="stats-grid">

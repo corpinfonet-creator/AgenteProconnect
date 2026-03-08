@@ -3,7 +3,7 @@ export const html = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agente Proconnect - Sistema de Gestión</title>
+    <title>Soft ProConnect Peru SAC - Sistema de Gestión</title>
     <style>
         * {
             margin: 0;
@@ -238,7 +238,7 @@ export const html = `<!DOCTYPE html>
 <body>
     <div class="container">
         <div class="left-panel">
-            <h1>🚀 Agente Proconnect</h1>
+            <h1>🚀 Soft ProConnect Peru SAC</h1>
             <p>Sistema inteligente de gestión empresarial con integración a Slack y tecnología de IA avanzada.</p>
 
             <div class="features">

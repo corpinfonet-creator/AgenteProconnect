@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estado del Sistema - Agente Proconnect</title>
+    <title>Estado del Sistema - Soft ProConnect Peru SAC</title>
     <style>
         * {
             margin: 0;
