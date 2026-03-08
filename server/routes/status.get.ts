@@ -1,8 +1,6 @@
-import { isDatabaseAvailable } from "../lib/db/client";
-
 export default defineEventHandler(async (event) => {
-  const dbStatus = isDatabaseAvailable();
   const hasPostgresUrl = !!process.env.POSTGRES_URL;
+  const dbStatus = hasPostgresUrl;
 
   return `<!DOCTYPE html>
 <html lang="es">
