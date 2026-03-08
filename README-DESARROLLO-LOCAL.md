@@ -234,6 +234,27 @@ Lado derecho: Navegador
 
 ## 🆘 **PROBLEMAS COMUNES**
 
+### **Problema: "Cannot access before initialization" en desarrollo**
+
+```bash
+Error: Cannot access 'index_get$1' before initialization
+```
+
+**Solución:**
+Este es un bug conocido de Nitro en modo desarrollo. Usa modo producción local en su lugar:
+
+```bash
+# 1. Hacer build
+npm run build
+
+# 2. Iniciar servidor de producción local
+node .output/server/index.mjs
+
+# 3. Abrir: http://localhost:3000/
+```
+
+El modo producción local es **casi tan rápido** como dev, y funciona perfectamente.
+
 ### **Problema: Puerto 3000 ocupado**
 
 ```bash
@@ -256,9 +277,9 @@ PORT=3001 npm run dev
 ```bash
 # 1. Asegúrate de guardar el archivo (Ctrl+S)
 # 2. Recarga el navegador (Ctrl+F5 - hard reload)
-# 3. Si no funciona, reinicia el servidor:
-# Ctrl+C en terminal
-npm run dev
+# 3. Si no funciona, haz rebuild:
+npm run build
+node .output/server/index.mjs
 ```
 
 ### **Problema: Error al iniciar**
@@ -267,7 +288,7 @@ npm run dev
 # Reinstalar dependencias
 rm -rf node_modules package-lock.json
 npm install
-npm run dev
+npm run build
 ```
 
 ---
