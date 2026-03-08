@@ -4,7 +4,7 @@ import { sql, isDatabaseAvailable } from "../db/client";
 
 export interface Session {
   id: string;
-  user_id: number;
+  user_id: string; // UUID
   created_at: Date;
   expires_at: Date;
   last_activity: Date;

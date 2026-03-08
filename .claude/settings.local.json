@@ -18,7 +18,14 @@
       "Bash(node -c:*)",
       "Bash(node:*)",
       "Bash(npm run db:migrate:*)",
-      "Bash(npm run db:slack:*)"
+      "Bash(npm run db:slack:*)",
+      "Bash(npm run slack:setup:*)",
+      "Bash(start https://api.slack.com/apps)",
+      "Bash(npm run db:fix-sessions:*)",
+      "Bash(check-users.sql:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npm run db:fix-users:*)",
+      "Bash(start:*)"
     ]
   }
 }

@@ -12,6 +12,10 @@
     "db:init": "tsx scripts/init-database.ts",
     "db:migrate": "tsx scripts/init-multi-tenant-db.ts",
     "db:slack": "tsx scripts/init-slack-tables.ts",
+    "db:fix-sessions": "tsx scripts/fix-sessions-table.ts",
+    "db:fix-users": "tsx scripts/migrate-users-to-uuid.ts",
+    "slack:setup": "tsx scripts/setup-slack-app.ts",
+    "slack:credentials": "tsx scripts/update-slack-credentials.ts",
     "test:login": "tsx scripts/test-login.ts",
     "prepare": "nitro prepare",
     "preview": "node .output/server/index.mjs",
@@ -20,6 +24,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.3.0",
     "@neondatabase/serverless": "^1.0.2",
     "@slack/bolt": "^4.6.0",
     "@slack/web-api": "^7.13.0",
