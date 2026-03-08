@@ -311,7 +311,7 @@ const loginHtml = `<!DOCTYPE html>
             </div>
 
             <div style="text-align: center; margin-top: 20px; color: #718096;">
-                ¿No tienes cuenta? <a href="/register" style="color: #667eea; text-decoration: none; font-weight: 600;">Regístrate</a>
+                ¿No tienes cuenta? <a href="/signup" style="color: #667eea; text-decoration: none; font-weight: 600;">Regístrate</a>
             </div>
 
             <div class="divider">
