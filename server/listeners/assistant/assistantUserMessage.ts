@@ -1,9 +1,9 @@
 import type { AssistantUserMessageMiddleware } from "@slack/bolt";
 import type { ModelMessage } from "ai";
 import { start } from "workflow/api";
-import { chatWorkflow } from "~/lib/ai/workflows/chat";
-import { getClientToken } from "~/lib/slack/client";
-import { getThreadContextAsModelMessage } from "~/lib/slack/utils";
+import { chatWorkflow } from "../../lib/ai/workflows/chat";
+import { getClientToken } from "../../lib/slack/client";
+import { getThreadContextAsModelMessage } from "../../lib/slack/utils";
 
 export const assistantUserMessage: AssistantUserMessageMiddleware = async ({
   client,

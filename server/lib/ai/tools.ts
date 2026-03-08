@@ -1,7 +1,7 @@
 import { tool } from "ai";
 import { z } from "zod";
-import type { SlackAgentContextInput } from "~/lib/ai/context";
-import { channelJoinApprovalHook } from "~/lib/ai/workflows/hooks";
+import type { SlackAgentContextInput } from "./context";
+import { channelJoinApprovalHook } from "./workflows/hooks";
 
 const getChannelMessages = tool({
   description:
@@ -18,7 +18,7 @@ const getChannelMessages = tool({
     // Dynamic imports inside step to avoid bundling Node.js modules in workflow
     const { WebClient } = await import("@slack/web-api");
     const { getChannelContextAsModelMessage } = await import(
-      "~/lib/slack/utils"
+      "../slack/utils"
     );
 
     const ctx = experimental_context as SlackAgentContextInput;
@@ -58,7 +58,7 @@ const getThreadMessages = tool({
     "use step";
     const { WebClient } = await import("@slack/web-api");
     const { getThreadContextAsModelMessage } = await import(
-      "~/lib/slack/utils"
+      "../slack/utils"
     );
 
     const ctx = experimental_context as SlackAgentContextInput;
@@ -97,7 +97,7 @@ async function sendApprovalRequest(
 > {
   "use step";
   const { WebClient } = await import("@slack/web-api");
-  const { channelJoinApprovalBlocks } = await import("~/lib/slack/blocks");
+  const { channelJoinApprovalBlocks } = await import("../slack/blocks");
 
   const client = new WebClient(ctx.token);
 

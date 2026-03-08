@@ -1,5 +1,5 @@
 import type { App } from "@slack/bolt";
-import { CHANNEL_JOIN_APPROVAL_ACTION } from "~/lib/slack/blocks";
+import { CHANNEL_JOIN_APPROVAL_ACTION } from "../../lib/slack/blocks";
 import { channelJoinApprovalCallback } from "./channel-join-approval";
 import { feedbackButtonsCallback } from "./feedback-button-action";
 import sampleActionCallback from "./sample-action";

@@ -1,13 +1,13 @@
 import type { AllMiddlewareArgs, SlackEventMiddlewareArgs } from "@slack/bolt";
 import type { ModelMessage } from "ai";
 import { start } from "workflow/api";
-import { chatWorkflow } from "~/lib/ai/workflows/chat";
-import { feedbackBlock } from "~/lib/slack/blocks";
-import { getClientToken } from "~/lib/slack/client";
+import { chatWorkflow } from "../../lib/ai/workflows/chat";
+import { feedbackBlock } from "../../lib/slack/blocks";
+import { getClientToken } from "../../lib/slack/client";
 import {
   getThreadContextAsModelMessage,
   updateAgentStatus,
-} from "~/lib/slack/utils";
+} from "../../lib/slack/utils";
 
 const appMentionCallback = async ({
   event,

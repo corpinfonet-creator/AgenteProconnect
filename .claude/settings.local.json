@@ -9,7 +9,9 @@
       "Bash(npm install:*)",
       "WebFetch(domain:agente-proconnect.vercel.app)",
       "Bash(export POSTGRES_URL:*)",
-      "Bash(npm run db:init:*)"
+      "Bash(npm run db:init:*)",
+      "Bash(npm run build:*)",
+      "Bash(find:*)"
     ]
   }
 }
