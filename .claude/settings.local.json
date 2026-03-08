@@ -7,7 +7,9 @@
       "Bash(git push:*)",
       "Bash(pnpm add:*)",
       "Bash(npm install:*)",
-      "WebFetch(domain:agente-proconnect.vercel.app)"
+      "WebFetch(domain:agente-proconnect.vercel.app)",
+      "Bash(export POSTGRES_URL:*)",
+      "Bash(npm run db:init:*)"
     ]
   }
 }

@@ -9,6 +9,7 @@
     "dev": "nitro dev",
     "dev:tunnel": "tsx scripts/dev.tunnel.ts",
     "configure": "tsx scripts/configure.ts",
+    "db:init": "tsx scripts/init-database.ts",
     "prepare": "nitro prepare",
     "preview": "node .output/server/index.mjs",
     "lint": "biome check .",
