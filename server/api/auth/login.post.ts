@@ -1,9 +1,12 @@
+import { UserService } from "../../lib/auth/users";
+import { SessionService } from "../../lib/auth/session";
+
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     const { email, password } = body;
 
-    // Validación básica
+    // Validación de campos
     if (!email || !password) {
       throw createError({
         statusCode: 400,
@@ -11,56 +14,38 @@ export default defineEventHandler(async (event) => {
       });
     }
 
-    // TODO: Aquí integrarás con tu base de datos real
-    // Por ahora, usamos credenciales de demo
-    const DEMO_USERS = [
-      {
-        email: "admin@proconnect.com",
-        password: "admin123",
-        name: "Administrador",
-        role: "admin",
-      },
-      {
-        email: "demo@proconnect.com",
-        password: "demo123",
-        name: "Usuario Demo",
-        role: "user",
-      },
-    ];
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      throw createError({
+        statusCode: 400,
+        message: "Formato de email inválido",
+      });
+    }
 
-    const user = DEMO_USERS.find(
-      (u) => u.email === email && u.password === password,
-    );
+    // Validar credenciales
+    const user = UserService.validateCredentials(email, password);
 
     if (!user) {
       throw createError({
         statusCode: 401,
-        message: "Credenciales inválidas",
+        message: "Email o contraseña incorrectos",
       });
     }
 
-    // Crear sesión simple (en producción usar JWT o cookies seguras)
-    const session = {
-      user: {
-        email: user.email,
-        name: user.name,
-        role: user.role,
-      },
-      token: Buffer.from(`${user.email}:${Date.now()}`).toString("base64"),
-    };
+    // Crear sesión
+    const sessionId = SessionService.create(user);
 
     // Establecer cookie de sesión
-    setCookie(event, "session", session.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60 * 24 * 7, // 7 días
-      path: "/",
-    });
+    SessionService.setSessionCookie(event, sessionId);
+
+    // Retornar usuario sin información sensible
+    const safeUser = UserService.getSafeUser(user);
 
     return {
       success: true,
       message: "Inicio de sesión exitoso",
-      user: session.user,
+      user: safeUser,
     };
   } catch (error: any) {
     throw createError({

@@ -309,6 +309,10 @@ export const html = `<!DOCTYPE html>
                 <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
             </div>
 
+            <div style="text-align: center; margin-top: 20px; color: #718096;">
+                ¿No tienes cuenta? <a href="/register" style="color: #667eea; text-decoration: none; font-weight: 600;">Regístrate</a>
+            </div>
+
             <div class="divider">
                 <span>o continuar con</span>
             </div>

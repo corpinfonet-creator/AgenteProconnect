@@ -1,10 +1,23 @@
+import { SessionService } from "../lib/auth/session";
+import { UserService } from "../lib/auth/users";
+
 export default defineEventHandler(async (event) => {
   // Verificar sesión
-  const sessionToken = getCookie(event, "session");
+  const session = SessionService.getFromEvent(event);
 
-  if (!sessionToken) {
+  if (!session) {
     return sendRedirect(event, "/", 302);
   }
+
+  // Obtener datos del usuario
+  const user = UserService.findById(session.userId);
+
+  if (!user) {
+    SessionService.clearSessionCookie(event);
+    return sendRedirect(event, "/", 302);
+  }
+
+  const safeUser = UserService.getSafeUser(user);
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -197,8 +210,8 @@ export default defineEventHandler(async (event) => {
         <h1>🚀 Agente Proconnect</h1>
         <div class="navbar-right">
             <div class="user-info">
-                <div class="avatar">A</div>
-                <span id="userName">Usuario</span>
+                <div class="avatar">${safeUser.name.charAt(0).toUpperCase()}</div>
+                <span id="userName">${safeUser.name}</span>
             </div>
             <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
         </div>
@@ -293,9 +306,18 @@ export default defineEventHandler(async (event) => {
     </div>
 
     <script>
-        function logout() {
+        async function logout() {
             if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-                document.cookie = 'session=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                try {
+                    await fetch('/api/auth/logout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error al cerrar sesión:', error);
+                }
                 window.location.href = '/';
             }
         }
