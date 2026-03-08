@@ -1,4 +1,4 @@
-import { UserService } from "../../lib/auth/users";
+import { UserService } from "../../lib/auth/users-multi-tenant";
 import { SessionService } from "../../lib/auth/session";
 
 export default defineEventHandler(async (event) => {

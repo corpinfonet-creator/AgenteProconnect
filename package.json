@@ -10,6 +10,7 @@
     "dev:tunnel": "tsx scripts/dev.tunnel.ts",
     "configure": "tsx scripts/configure.ts",
     "db:init": "tsx scripts/init-database.ts",
+    "db:migrate": "tsx scripts/init-multi-tenant-db.ts",
     "test:login": "tsx scripts/test-login.ts",
     "prepare": "nitro prepare",
     "preview": "node .output/server/index.mjs",
