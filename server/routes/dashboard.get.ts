@@ -437,7 +437,7 @@ export default defineEventHandler(async (event) => {
         <div class="quick-actions">
             <h3>⚡ Acciones Rápidas</h3>
             <div class="actions-grid">
-                <button class="action-btn" onclick="alert('Próximamente')">🔗 Conectar Slack</button>
+                <button class="action-btn" onclick="window.location.href='/dashboard/slack'">🔗 Conectar Slack</button>
                 <button class="action-btn" onclick="alert('Próximamente')">⚙️ Configurar Agente</button>
                 <button class="action-btn" onclick="alert('Próximamente')">👥 Invitar Usuario</button>
                 <button class="action-btn" onclick="alert('Próximamente')">📈 Ver Métricas</button>
