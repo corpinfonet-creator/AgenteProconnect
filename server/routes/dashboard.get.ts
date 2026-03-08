@@ -1,7 +1,6 @@
-import { SessionService } from "../lib/auth/session";
-import { UserService } from "../lib/auth/users-multi-tenant";
-
 export default defineEventHandler(async (event) => {
+  const { SessionService } = await import("../lib/auth/session");
+  const { UserService } = await import("../lib/auth/users-multi-tenant");
   // Verificar sesión
   const session = await SessionService.getFromEvent(event);
 
