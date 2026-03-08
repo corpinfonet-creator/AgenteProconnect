@@ -3,14 +3,14 @@ import { UserService } from "../lib/auth/users";
 
 export default defineEventHandler(async (event) => {
   // Verificar sesión
-  const session = SessionService.getFromEvent(event);
+  const session = await SessionService.getFromEvent(event);
 
   if (!session) {
     return sendRedirect(event, "/", 302);
   }
 
   // Obtener datos del usuario
-  const user = UserService.findById(session.userId);
+  const user = await UserService.findById(session.user_id);
 
   if (!user) {
     SessionService.clearSessionCookie(event);

@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Validar credenciales
-    const user = UserService.validateCredentials(email, password);
+    const user = await UserService.validateCredentials(email, password);
 
     if (!user) {
       throw createError({
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Crear sesión
-    const sessionId = SessionService.create(user);
+    const sessionId = await SessionService.create(user);
 
     // Establecer cookie de sesión
     SessionService.setSessionCookie(event, sessionId);

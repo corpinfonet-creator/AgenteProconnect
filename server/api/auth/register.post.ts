@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Verificar si el usuario ya existe
-    const existingUser = UserService.findByEmail(email);
+    const existingUser = await UserService.findByEmail(email);
     if (existingUser) {
       throw createError({
         statusCode: 409,
@@ -48,17 +48,23 @@ export default defineEventHandler(async (event) => {
       });
     }
 
-    // Crear nuevo usuario
-    // TODO: En producción, hashear la contraseña con bcrypt
-    const newUser = UserService.create({
+    // Crear nuevo usuario (la contraseña se hashea automáticamente)
+    const newUser = await UserService.create({
       email: email.toLowerCase().trim(),
-      password, // TODO: hashear
+      password,
       name: name.trim(),
       role: "user", // Por defecto, rol de usuario
     });
 
+    if (!newUser) {
+      throw createError({
+        statusCode: 500,
+        message: "Error al crear usuario",
+      });
+    }
+
     // Crear sesión automáticamente
-    const sessionId = SessionService.create(newUser);
+    const sessionId = await SessionService.create(newUser);
     SessionService.setSessionCookie(event, sessionId);
 
     // Retornar usuario sin información sensible

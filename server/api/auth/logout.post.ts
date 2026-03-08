@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
     if (sessionId) {
       // Destruir sesión del servidor
-      SessionService.destroy(sessionId);
+      await SessionService.destroy(sessionId);
     }
 
     // Eliminar cookie

@@ -4,7 +4,7 @@ import { UserService } from "../../lib/auth/users";
 export default defineEventHandler(async (event) => {
   try {
     // Obtener sesión actual
-    const session = SessionService.getFromEvent(event);
+    const session = await SessionService.getFromEvent(event);
 
     if (!session) {
       throw createError({
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Buscar usuario completo
-    const user = UserService.findById(session.userId);
+    const user = await UserService.findById(session.user_id);
 
     if (!user) {
       // Si el usuario no existe, destruir sesión
@@ -32,8 +32,8 @@ export default defineEventHandler(async (event) => {
       success: true,
       user: safeUser,
       session: {
-        createdAt: session.createdAt,
-        expiresAt: session.expiresAt,
+        createdAt: session.created_at,
+        expiresAt: session.expires_at,
       },
     };
   } catch (error: any) {
